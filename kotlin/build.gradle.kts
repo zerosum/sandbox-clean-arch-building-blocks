@@ -1,5 +1,5 @@
 plugins {
-	id("base")
+    kotlin("jvm") version "1.3.41" apply false
 }
 
 group = "dev.zerosum"

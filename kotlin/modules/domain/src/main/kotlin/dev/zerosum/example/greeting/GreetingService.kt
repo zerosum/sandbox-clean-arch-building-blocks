@@ -1,5 +1,7 @@
 package dev.zerosum.example.greeting
 
+import java.time.Clock
+import java.time.ZonedDateTime
 import javax.inject.Named
 
 interface GreetingService {
@@ -7,8 +9,17 @@ interface GreetingService {
 }
 
 @Named
-class GreetingServiceImpl : GreetingService {
+class GreetingServiceImpl(
+        private val clock: Clock
+) : GreetingService {
+
     override fun greet(): String {
-        return "Hello, World!!"
+        return when (ZonedDateTime.now(clock).hour) {
+            in 0..6 -> "Zzz..."
+            in 7..11 -> "Good morning!"
+            in 12..17 -> "Good afternoon!"
+            in 18..23 -> "Good evening!"
+            else -> "Hello, World!!"
+        }
     }
 }
