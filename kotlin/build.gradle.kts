@@ -2,5 +2,5 @@ plugins {
 	id("base")
 }
 
-group = "com.example"
+group = "dev.zerosum"
 version = "0.0.1-SNAPSHOT"

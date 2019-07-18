@@ -7,7 +7,7 @@ plugins {
 	kotlin("plugin.spring") version "1.3.41"
 }
 
-java.sourceCompatibility = JavaVersion.VERSION_1_8
+java.sourceCompatibility = JavaVersion.VERSION_12
 
 repositories {
 	mavenCentral()
@@ -17,7 +17,7 @@ dependencies {
 	implementation(project(":modules:domain"))
 
 	implementation(kotlin("reflect"))
-	implementation(kotlin("stdlib-jdk8"))
+	implementation(kotlin("stdlib"))
 
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -27,6 +27,6 @@ dependencies {
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "1.8"
+		jvmTarget = "12"
 	}
 }
