@@ -5,6 +5,7 @@ pluginManagement {
 }
 rootProject.name = "clean-arch-kotlin"
 include(
+		"modules:domain",
 		"modules:springboot",
-		"modules:domain"
+		"modules:micronaut"
 )

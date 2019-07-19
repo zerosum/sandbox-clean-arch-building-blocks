@@ -1,0 +1,5 @@
+micronaut:
+    application:
+        name: micronaut
+jackson:
+    module-scan: false
