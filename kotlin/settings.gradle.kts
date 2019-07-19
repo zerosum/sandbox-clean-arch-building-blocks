@@ -5,6 +5,6 @@ pluginManagement {
 }
 rootProject.name = "clean-arch-kotlin"
 include(
-		"modules:application",
+		"modules:springboot",
 		"modules:domain"
 )
