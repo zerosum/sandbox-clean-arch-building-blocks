@@ -10,19 +10,23 @@ import wvlet.airframe._
 import scala.concurrent.Future
 import scala.util.{Failure, Success}
 
-object Application extends App with ApplicationConfig {
-  val system = ActorSystem("example")
+object Application extends ApplicationConfig {
 
-  val design = newDesign
-    .bind[ActorSystem].toInstance(system)
-    .add(applicationConfigDesign)
-    .add(controller.createControllerDesign)
+  def main(args: Array[String]): Unit = {
+    val system = ActorSystem("example")
 
-  design.withSession { session =>
-    session
-      .build[HttpServer]
-      .start("localhost", 8080, settings = ServerSettings(system))
+    val design = newDesign
+      .bind[ActorSystem].toInstance(system)
+      .add(applicationConfigDesign)
+      .add(controller.createControllerDesign)
+
+    design.withSession { session =>
+      session
+        .build[HttpServer]
+        .start("localhost", 8080, settings = ServerSettings(system))
+    }
   }
+
 }
 
 trait HttpServer {
