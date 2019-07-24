@@ -43,7 +43,7 @@ trait HttpServer {
 
     bindingFuture.onComplete {
       case Success(binding) =>
-        s"Server online at http://${binding.localAddress.getHostName}:${binding.localAddress.getPort}/\nPress RETURN to stop..."
+        system.log.info(s"Server online at http://${binding.localAddress.getHostName}:${binding.localAddress.getPort}/")
       case Failure(ex) =>
         system.log.error(ex, "")
     }

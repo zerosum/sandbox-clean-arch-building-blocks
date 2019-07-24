@@ -3,13 +3,18 @@ ThisBuild / scalaVersion := "2.12.8"
 ThisBuild / scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked", "-Xlint")
 
 lazy val commonSettings = Seq(
-  libraryDependencies ++= Seq(
-    "org.wvlet.airframe" %% "airframe" % "19.7.0",
+  libraryDependencies ++= {
+    val airframeVersion = "19.7.0"
 
-    "org.scalactic" %% "scalactic" % "3.0.8",
-    "org.scalatest" %% "scalatest" % "3.0.8" % Test,
-    "org.scalamock" %% "scalamock" % "4.3.+" % Test
-  )
+    Seq(
+      "org.wvlet.airframe" %% "airframe" % airframeVersion,
+      "org.wvlet.airframe" %% "airframe-log" % airframeVersion,
+
+      "org.scalactic" %% "scalactic" % "3.0.8",
+      "org.scalatest" %% "scalatest" % "3.0.8" % Test,
+      "org.scalamock" %% "scalamock" % "4.3.+" % Test
+    )
+  }
 )
 
 lazy val root = (project in file("."))
